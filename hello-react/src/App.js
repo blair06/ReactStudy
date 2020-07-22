@@ -1,7 +1,7 @@
 import React from "react";
-import MyComponent from "./MyComponent";
+import Say from "./Say";
 
 const App = () => {
-  return <MyComponent name='hyewon'>children값이다 내가바로</MyComponent>;
+  return <Say/>;
 };
 export default App;
