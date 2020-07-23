@@ -1,14 +1,27 @@
 import React, {useState} from 'react';
 
 const EventPractice = ()=> {
-    const[message,setMessage] = useState('');
-    const[username, setUsername] = useState('');
-    const onChangeMessage = (e)=>{setMessage(e.target.value)};
-    const onChangeUsername = (e) => {setUsername(e.target.value)};
+    const[form, setForm] = useState({
+        username: '',
+        message: ''
+    });
+    const {username,message} = form;
+    const onChange = e => {
+        const nextForm = {
+            ...form,
+            [e.target.name]:e.target.value
+        }
+        setForm(nextForm);
+    }
+    // const[username, setUsername] = useState('');
+    // const onChangeMessage = (e)=>{setMessage(e.target.value)};
+    // const onChangeUsername = (e) => {setUsername(e.target.value)};
     const onClick = () => {
         alert(username+ ':' +message);
-        setUsername('');
-        setMessage('');
+        setForm({
+            username:'',
+            message: ''
+        });
     }
     const onEnter = (e) => {
         if(e.key = 'Enter'){
@@ -21,15 +34,15 @@ const EventPractice = ()=> {
         <input
           type="text"
           placeholder="username"
-          name="message"
-          onChange={onChangeUsername}/* this는 component */
+          name="username"
+          onChange={onChange}/* this는 component */
           value={username}
         />
         <input
           type="text"
           placeholder="Message"
           name="message"
-          onChange={onChangeMessage}/* this는 component */
+          onChange={onChange}/* this는 component */
           value={message}
         />
         <button onClick={onClick}>입력</button>{" "}
