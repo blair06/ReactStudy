@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ScrollBox from "./ScrollBox";
+import IterationSample from "./IterationSample";
 
 const App = () => {
-  return <ScrollBox/>;
+  return <IterationSample/>;
 };
 export default App;
