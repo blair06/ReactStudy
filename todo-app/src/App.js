@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import TodoTemplate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
@@ -17,10 +17,26 @@ const App = () => {
     checked:false,
   }]
   )
+
+  const nextId = useRef(4);
+  const onInsert = useCallback(text => {
+    const todo = {
+      id: nextId.current,
+      text: text,
+      checked:false
+    };
+    setTodos(todos.concat(todo));
+    nextId.current += 1;
+  },[todos],); //두번째 파라미터엔 어떤값이 바뀌었을때 함수를 실행할지 배열로 지정
+ 
+ const onRemove = useCallback(id=>{
+   setTodos(todos.filter(todo=> todo !== id ));
+ },[todos]);
+
   return (
     <TodoTemplate>
-      <TodoInsert/>
-      <TodoList todos={todos}/>
+      <TodoInsert onInsert={onInsert}/>
+      <TodoList todos={todos} onRemove={onRemove}/>
     </TodoTemplate>
     
   );
