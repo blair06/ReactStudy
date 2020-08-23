@@ -26,7 +26,7 @@ const App = () => {
       <Switch>
         <Route path="/" component={Home} exact={true}/>{/*루트컴포넌트 규칙중복을 방지하기위해 exact를 설정해준다. */}
         <Route path="/about" component={About}/>
-        <Route path="/profiles" exact={true} component = {Profiles}/>
+        <Route path="/profiles" component = {Profiles}/>
         <Route path="/history" component = {HistorySample}/>
         {/* 여러경로에서 같은 컴포넌트를 보여주는 방법 
         -> path props를 배열로 설정해주면 된다.
